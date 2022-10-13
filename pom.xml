@@ -37,6 +37,40 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>cn.smallbun.screw</groupId>
+                <artifactId>screw-maven-plugin</artifactId>
+                <version>1.0.5</version>
+                <dependencies>
+                    <!-- 数据库连接 -->
+                    <dependency>
+                        <groupId>com.zaxxer</groupId>
+                        <artifactId>HikariCP</artifactId>
+                        <version>3.4.5</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.22</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <!-- 数据库相关配置 -->
+                    <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
+                    <jdbcUrl>jdbc:mysql://localhost:10086/qdmetro_model_dev?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;nullCatalogMeansCurrent=true</jdbcUrl>
+                    <username>root</username>
+                    <password>mysqladm</password>
+                    <!-- screw 配置 -->
+                    <fileType>WORD</fileType> <!--生成word文件，如果填写 HTML的话，会生成html文件-->
+                    <title>模型管理数据库文档</title> <!--标题-->
+                    <fileName>模型管理数据库文档</fileName> <!--文档名称 为空时:将采用[数据库名称-描述-版本号]作为文档名称-->
+                    <description>模型管理数据库文档</description> <!--描述-->
+                    <version>V.0</version> <!--版本-->
+                    <fileOutputDir>D:/test</fileOutputDir>
+                    <openOutputDir>false</openOutputDir> <!--打开文件输出目录-->
+                    <produceType>freemarker</produceType> <!--生成模板-->
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

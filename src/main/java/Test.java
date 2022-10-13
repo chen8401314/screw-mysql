@@ -13,9 +13,9 @@ import java.util.List;
 
 public class Test {
 
-    private String fileName = "oa数据库文档";
+    private String fileName = "模型管理数据库文档";
 
-    private String desc = "数据库设计文档生成";
+    private String desc = "模型管理数据库文档";
 
     private String version = "1.0.0";
 
@@ -28,8 +28,8 @@ public class Test {
         //数据源
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        hikariConfig.setJdbcUrl("jdbc:mysql://192.168.1.141:3307/oa_service_new?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false&nullCatalogMeansCurrent=true");
-        hikariConfig.setUsername("oper");
+        hikariConfig.setJdbcUrl("jdbc:mysql://localhost:10086/qdmetro_model_dev?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false&nullCatalogMeansCurrent=true");
+        hikariConfig.setUsername("root");
         hikariConfig.setPassword("mysqladm");
         //设置可以获取tables remarks信息
         hikariConfig.addDataSourceProperty("useInformationSchema", "true");
@@ -43,7 +43,7 @@ public class Test {
                 //打开目录
                 .openOutputDir(true)
                 //文件类型
-                .fileType(EngineFileType.HTML)
+                .fileType(EngineFileType.WORD)
                 //生成模板实现
                 .produceType(EngineTemplateType.freemarker)
                 //自定义文件名称
@@ -64,7 +64,7 @@ public class Test {
         //List<String> tableName = List.of("");
 
         //指定表前缀
-        List<String> suffix = List.of("PF_FLOW_");
+        List<String> suffix = List.of("pf_");
 
         ProcessConfig processConfig = ProcessConfig.builder()
                 //指定生成逻辑、当存在指定表、指定表前缀、指定表后缀时，将生成指定表，其余表不生成、并跳过忽略表配置
